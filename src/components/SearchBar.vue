@@ -27,12 +27,16 @@ export default {
   watch: {
     category: function (e) {
       if (this.$route.name !== "Categories") {
-        this.$router.push({
-          name: "Categories",
-          params: { errors: e },
-        });
+        if (e.length !== 0) {
+          this.$router.push({
+            name: "Categories",
+            params: { errors: e },
+          });
+        }
       }
-      this.$root.$emit("searchVal", e);
+      if (e.length !== 0) {
+        this.$root.$emit("searchVal", e);
+      }
     },
   },
 };
