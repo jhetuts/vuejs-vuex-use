@@ -10,38 +10,48 @@
     max-width: 1024px;
     flex-direction: column;
     margin: auto;
-    .slideshow {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-
-      li {
-        a {
-          text-decoration: none;
-          .category-details {
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-            align-items: center;
+    h2 {
+      margin-bottom: 20px;
+    }
+    .slider-container {
+      .slider-touch {
+        .slider-wrapper {
+          .slider-item {
+            width: calc(33.33% - 19px);
+            font-size: 100%;
             background: #fff;
-            padding: 20px;
-            h2 {
-              color: $text-black;
-              font-size: 112.5%;
-              margin-bottom: 20px;
-            }
-            img {
-              display: block;
-              width: 30%;
-              margin: 0 auto 20px;
-            }
-            .articles {
-              margin-bottom: 5px;
-              color: $green;
-            }
-            p.updated {
-              color: $text-gray;
-              font-size: 87.5%;
+            padding: 10px;
+            margin: 0 10px;
+            border: 2px solid #eee;
+            border-radius: 4px;
+            a {
+              text-decoration: none;
+              .category-details {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+                background: #fff;
+                padding: 20px;
+                h2 {
+                  color: $text-black;
+                  font-size: 112.5%;
+                  margin-bottom: 20px;
+                }
+                img {
+                  display: block;
+                  width: 30%;
+                  margin: 0 auto 20px;
+                }
+                .articles {
+                  margin-bottom: 5px;
+                  color: $green;
+                }
+                p.updated {
+                  color: $text-gray;
+                  font-size: 87.5%;
+                }
+              }
             }
           }
         }

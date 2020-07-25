@@ -2,8 +2,8 @@
   <div class="Article-Slideshow">
     <div class="inner-wrapper">
       <h2>Other Categories</h2>
-      <ul class="slideshow">
-        <li v-for="category in otherCategories" :key="category.id">
+      <slider ref="slider" :options="options">
+        <slideritem v-for="category in otherCategories" :key="category.id">
           <router-link :to="{ name: 'Category', params: { id: category.id } }">
             <div class="category-details">
               <img
@@ -19,18 +19,32 @@
               </p>
             </div>
           </router-link>
-        </li>
-      </ul>
+        </slideritem>
+        <div slot="loading">loading...</div>
+      </slider>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { slider, slideritem } from "vue-concise-slider";
 
 export default {
   name: "Slideshow",
-  components: {},
+  data() {
+    return {
+      options: {
+        currentPage: 0,
+        slidesToScroll: 1,
+        pagination: false,
+      },
+    };
+  },
+  components: {
+    slider,
+    slideritem,
+  },
   methods: {
     ...mapActions(["getOtherCategories"]),
     scrollToActiveCategory() {
