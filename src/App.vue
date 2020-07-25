@@ -19,6 +19,11 @@ import SearchBar from "./components/SearchBar.vue";
 import ArticleSlideShow from "./components/ArticleSlideShow.vue";
 
 export default {
+  datat() {
+    return {
+      valueSearch: "",
+    };
+  },
   components: {
     "tawk-header": Header,
     SearchBar,

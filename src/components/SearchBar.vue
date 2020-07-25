@@ -1,14 +1,43 @@
 <template>
   <div class="search-bar">
-    <input type="text" placeholder="Search for answers" />
-    <button><i class="fa fa-search" aria-hidden="true"></i></button>
+    <input v-model="category" />
+    <button>
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      category: "",
+    };
+  },
+  methods: {
+    onChange(e) {
+      console.log(this.category);
+    },
+  },
+  mounted() {
+    this.$root.$on("clearSearch", () => {
+      this.category = "";
+    });
+  },
+  watch: {
+    category: function (e) {
+      if (this.$route.name !== "Categories") {
+        this.$router.push({
+          name: "Categories",
+          params: { errors: e },
+        });
+      }
+      this.$root.$emit("searchVal", e);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_searchbar.scss'
+@import "../scss/_searchbar.scss";
 </style>

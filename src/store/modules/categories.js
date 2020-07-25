@@ -6,6 +6,7 @@ const state = {
   articles: [],
   activeCategory: [],
   otherCategories: [],
+  filteredCategories: [],
 };
 
 // Getters
@@ -14,6 +15,7 @@ const getters = {
   allArticles: (state) => state.articles,
   activeCategory: (state) => state.activeCategory,
   otherCategories: (state) => state.otherCategories,
+  filteredCategories: (state) => state.filteredCategories,
 };
 
 // Actions
@@ -81,6 +83,15 @@ const actions = {
     });
     commit("setOtherCategories", withImageSrc);
   },
+  async filterCategories({ commit }, title) {
+    const currentCount = this.state.categories.categories;
+
+    const results = currentCount.filter((current) =>
+      current.title.toLowerCase().includes(title.toLowerCase())
+    );
+
+    commit("setFilteredCategories", results);
+  },
 };
 
 // Mutations
@@ -91,6 +102,8 @@ const mutations = {
     (state.activeCategory = activeCategory),
   setOtherCategories: (state, otherCategories) =>
     (state.otherCategories = otherCategories),
+  setFilteredCategories: (state, filteredCategories) =>
+    (state.filteredCategories = filteredCategories),
 };
 
 export default {
