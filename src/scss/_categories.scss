@@ -1,0 +1,41 @@
+@import "./_variables.scss";
+
+.Categories {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  .category {
+    width: 33.33%;
+    padding: 10px;
+    a {
+      text-decoration: none;
+
+      .category-details {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        background: #fff;
+        padding: 20px;
+        h2 {
+          color: $text-black;
+          font-size: 112.5%;
+          margin-bottom: 20px;
+        }
+        img {
+          display: block;
+          width: 30%;
+          margin: 0 auto 20px;
+        }
+        .articles {
+          margin-bottom: 5px;
+          color: $green;
+        }
+        p.updated {
+          color: $text-gray;
+          font-size: 87.5%;
+        }
+      }
+    }
+  }
+}
