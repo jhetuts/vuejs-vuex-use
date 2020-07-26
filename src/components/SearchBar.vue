@@ -14,11 +14,6 @@ export default {
       category: "",
     };
   },
-  methods: {
-    onChange(e) {
-      console.log(this.category);
-    },
-  },
   mounted() {
     this.$root.$on("clearSearch", () => {
       this.category = "";

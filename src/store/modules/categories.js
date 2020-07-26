@@ -1,7 +1,6 @@
 import axios from "axios";
 import { API } from "../../config/dev.envi";
 
-console.log(API);
 // States
 const state = {
   categories: [],
@@ -31,7 +30,6 @@ const actions = {
       try {
         data.src = require(`../../assets/images/${data.icon}.png`);
       } catch (err) {
-        console.log(err);
         data.src = "";
       }
       return data;

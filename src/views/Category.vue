@@ -113,7 +113,6 @@ export default {
       ];
     },
     author(newState, old) {
-      console.log(newState);
       this.authorsName = newState;
     },
   },

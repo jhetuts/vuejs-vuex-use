@@ -15,8 +15,14 @@
     </div>
   </div>
   <div class="Categories" v-else>
-    <div class="error" v-if="filteredCategories.length === 0">No categories</div>
-    <div class="category" v-for="category in filteredCategories" :key="category.id">
+    <div class="error" v-if="filteredCategories.length === 0">
+      No categories
+    </div>
+    <div
+      class="category"
+      v-for="category in filteredCategories"
+      :key="category.id"
+    >
       <router-link :to="{ name: 'Category', params: { id: category.id } }">
         <div class="category-details">
           <img v-if="category.src" :src="category.src" :alt="category.icon" />
@@ -63,7 +69,6 @@ export default {
     $route(to, from) {
       if (this.$route.params.id) {
         this.$root.$emit("searchVal", "");
-        console.log("route changed");
       }
     },
   },

@@ -34,9 +34,6 @@ export default {
     SearchBar,
     ArticleSlideShow,
   },
-  created() {
-    console.log(this.$route.params.id);
-  },
 };
 </script>
 
