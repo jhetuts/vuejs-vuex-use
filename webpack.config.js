@@ -5,7 +5,9 @@ const { VueLoaderPlugin } = require("vue-loader");
 const dataObj = require("./data/data.json");
 
 module.exports = {
-  entry: ["./src/app.js"],
+  entry: {
+    app: ["babel-polyfill", "./src/app.js"],
+  },
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: "/dist/",
