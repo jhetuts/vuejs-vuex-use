@@ -23,6 +23,10 @@
 
 - Added dev configuration for API endpoint
 
+## Notes
+
+- Some font awesome icon is not available (Ie. file-text-o, info-circle)
+
 ## Less
 
 - Was not able to make a test scripts
