@@ -7,6 +7,7 @@ const state = {
   activeCategory: [],
   otherCategories: [],
   filteredCategories: [],
+  author: [],
 };
 
 // Getters
@@ -16,6 +17,7 @@ const getters = {
   activeCategory: (state) => state.activeCategory,
   otherCategories: (state) => state.otherCategories,
   filteredCategories: (state) => state.filteredCategories,
+  author: (state) => state.author,
 };
 
 // Actions
@@ -33,7 +35,6 @@ const actions = {
       return data;
     });
     const sortedByOrder = withImageSrc.sort((x, y) => x.order - y.order);
-    console.log(sortedByOrder);
 
     commit("setAllCategories", withImageSrc);
   },
@@ -59,7 +60,6 @@ const actions = {
       try {
         data.src = require(`../../assets/images/${data.icon}.png`);
       } catch (err) {
-        console.log(err);
         data.src = "";
       }
       return data;
@@ -78,7 +78,6 @@ const actions = {
       try {
         data.src = require(`../../assets/images/${data.icon}.png`);
       } catch (err) {
-        console.log(err);
         data.src = "";
       }
       return data;
@@ -86,6 +85,7 @@ const actions = {
     const sortedByOrder = withImageSrc.sort((x, y) => x.order - y.order);
     commit("setOtherCategories", sortedByOrder);
   },
+
   async filterCategories({ commit }, title) {
     const currentCount = this.state.categories.categories;
 
@@ -94,6 +94,13 @@ const actions = {
     );
 
     commit("setFilteredCategories", results);
+  },
+
+  async getAuthor({ commit }, author) {
+    const response = await axios.get(
+      `http://localhost:9000/api/author/${author}`
+    );
+    commit("setAuthor", response.data.name);
   },
 };
 
@@ -107,6 +114,7 @@ const mutations = {
     (state.otherCategories = otherCategories),
   setFilteredCategories: (state, filteredCategories) =>
     (state.filteredCategories = filteredCategories),
+  setAuthor: (state, author) => (state.author = author),
 };
 
 export default {
