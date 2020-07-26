@@ -1,5 +1,7 @@
 import axios from "axios";
+import { API } from "../../config/dev.envi";
 
+console.log(API);
 // States
 const state = {
   categories: [],
@@ -23,7 +25,7 @@ const getters = {
 // Actions
 const actions = {
   async getAllCategories({ commit }) {
-    const response = await axios.get("http://localhost:9000/api/categories");
+    const response = await axios.get(`${API}/categories`);
     const filteredData = response.data.filter((category) => category.enabled);
     const withImageSrc = filteredData.map((data) => {
       try {
@@ -40,9 +42,7 @@ const actions = {
   },
 
   async getAllArticlesByCategory({ commit }, category) {
-    const response = await axios.get(
-      `http://localhost:9000/api/category/${category}`
-    );
+    const response = await axios.get(`${API}/category/${category}`);
     const publishedArticles = response.data.filter(
       (article) => article.status === "published"
     );
@@ -50,7 +50,7 @@ const actions = {
   },
 
   async getActiveCategory({ commit }, id) {
-    const response = await axios.get("http://localhost:9000/api/categories");
+    const response = await axios.get(`${API}/categories`);
     const filteredData = response.data.filter((category) => category.enabled);
     const activeCategory = filteredData.filter(
       (category) => category.id === id
@@ -69,7 +69,7 @@ const actions = {
   },
 
   async getOtherCategories({ commit }, id) {
-    const response = await axios.get("http://localhost:9000/api/categories");
+    const response = await axios.get(`${API}/categories`);
     const filteredData = response.data.filter((category) => category.enabled);
     const activeCategory = filteredData.filter(
       (category) => category.id !== id
@@ -97,9 +97,7 @@ const actions = {
   },
 
   async getAuthor({ commit }, author) {
-    const response = await axios.get(
-      `http://localhost:9000/api/author/${author}`
-    );
+    const response = await axios.get(`${API}/author/${author}`);
     commit("setAuthor", response.data.name);
   },
 };

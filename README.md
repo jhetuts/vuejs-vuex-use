@@ -1,9 +1,14 @@
 # tawk.to Frontend Developer Test
 
-### What is the test?
+## API
 
-You will be building a simple knowledge base site in Vue js. A basic structure has been set up, you will just need to build on top of it.
-But if you want to move things around, feel free to do so. 
+- Was able to consume all API
+- Was able to make all necessary experience functional
+
+## Less
+
+- Was not able to make a test scripts
+-
 
 ### Instructions
 
