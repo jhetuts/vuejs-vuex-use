@@ -7,9 +7,15 @@
   .category {
     width: 33.33%;
     padding: 10px;
+    
+    @media screen and (max-width: 768px) {
+      width: 50%;
+    }
+    @media screen and (max-width: 420px) {
+      width: 100%;
+    }
     a {
       text-decoration: none;
-
       .category-details {
         display: flex;
         flex-direction: column;
@@ -17,6 +23,7 @@
         align-items: center;
         background: #fff;
         padding: 20px;
+        text-align: center;
         h2 {
           color: $text-black;
           font-size: 112.5%;

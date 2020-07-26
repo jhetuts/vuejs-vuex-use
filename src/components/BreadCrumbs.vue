@@ -1,17 +1,43 @@
 <template>
   <ul class="breadcrumbs">
-    <li>{{$route.name}}</li>
+    <li v-for="path in paths" :key="path.path">
+      <p class="active" v-if="path.path === $route.path" :alt="path.path">{{path.name}}</p>
+      <p v-else>
+        <router-link :to="path.path">{{path.name}}</router-link>
+      </p>
+    </li>
   </ul>
 </template>
 
 <script>
 export default {
-  watch: {},
+  data() {
+    return {
+      paths: [
+        {
+          path: "/",
+          name: "All Categories",
+        },
+      ],
+    };
+  },
   mounted() {
-    console.log(this.$route);
+    this.paths.push({
+      path: this.$route.path,
+      name: this.$route.name,
+    });
+
+    this.$root.$on("sendTitle", (data) => {
+      this.paths.pop();
+      this.paths.push({
+        path: this.$route.path,
+        name: data,
+      });
+    });
   },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../scss/breadcrumbs.scss";
 </style>

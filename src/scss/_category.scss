@@ -5,25 +5,28 @@
   width: 100%;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   .left {
     display: flex;
     align-items: flex-start;
     width: 30%;
     padding: 10px;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
     .active-article {
       background: #fff;
       border-radius: 4px;
       border: 2px solid #eee;
-
       .top {
         border-bottom: 2px solid #eee;
+        text-align: center;
         h2 {
           color: $text-black;
           font-size: 112.5%;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
         }
         img {
           display: block;
@@ -34,6 +37,21 @@
           color: $text-gray;
           font-size: 87.5%;
         }
+        .total-article {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-size: 75%;
+          i {
+            color: $green;
+          }
+          span {
+            margin: 0 5px;
+            color: $text-gray;
+          }
+        }
       }
       .top,
       .bottom {
@@ -43,21 +61,39 @@
         align-items: center;
         flex-direction: column;
       }
+      .bottom {
+        text-align: center;
+        i {
+          display: block;
+          margin-bottom: 10px;
+          color: $green;
+        }
+        p {
+          color: $text-gray;
+        }
+      }
     }
   }
   .right {
-    width: 60%;
+    width: 65%;
     padding: 10px;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
     .list-of-articles {
       li {
         display: flex;
         position: relative;
+        flex-wrap: wrap;
         padding: 20px 10px;
         background: #fff;
         margin-bottom: 20px;
         border-radius: 4px;
         border: 2px solid #eee;
         cursor: pointer;
+        @media screen and (max-width: 768px) {
+            margin-bottom: 10px;
+        }
         &:last-child {
           margin-bottom: 10px;
         }
@@ -72,15 +108,24 @@
         }
         .details {
           width: calc(100% - 50px);
+          padding-right: 20px;
           h3 {
             color: $text-black;
             font-size: 106.3%;
             margin-bottom: 10px;
+            @media screen and (max-width: 768px) {
+                margin-bottom: 5px;
+                font-size: 100%;
+            }
           }
           p.updated {
             color: $text-gray;
             font-size: 87.5%;
           }
+        }
+        .more-details {
+          border-top: 2px solid #eee;
+          width: 100%;
         }
         &:after {
           position: absolute;
@@ -93,6 +138,9 @@
           font-size: 100%;
           color: $green;
           content: "\f054";
+            @media screen and (max-width: 768px) {
+              right: 10px;
+            }
         }
       }
     }

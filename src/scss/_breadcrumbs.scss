@@ -1,0 +1,40 @@
+@import "./_variables.scss";
+.breadcrumbs {
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  margin-bottom: 20px;
+  li {
+    p {
+      color: $text-gray;
+        @media screen and (max-width: 768px) {
+            font-size: 87.5%;
+        }
+      a {
+        position: relative;
+        text-decoration: none;
+        color: $green;
+        padding-right: 20px;
+        @media screen and (max-width: 768px) {
+            padding-right: 10px;
+        }
+      }
+    }
+    p.active {
+      position: relative;
+      padding-left: 20px;
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-family: "Font Awesome 5 Free";
+        font-style: normal;
+        font-weight: 900;
+        font-size: 75%;
+        color: $text-gray;
+        content: "\f054";
+      }
+    }
+  }
+}

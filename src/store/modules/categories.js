@@ -32,6 +32,8 @@ const actions = {
       }
       return data;
     });
+    const sortedByOrder = withImageSrc.sort((x, y) => x.order - y.order);
+    console.log(sortedByOrder);
 
     commit("setAllCategories", withImageSrc);
   },
@@ -62,6 +64,7 @@ const actions = {
       }
       return data;
     });
+
     commit("setActiveCategory", withImageSrc);
   },
 
@@ -71,7 +74,6 @@ const actions = {
     const activeCategory = filteredData.filter(
       (category) => category.id !== id
     );
-
     const withImageSrc = activeCategory.map((data) => {
       try {
         data.src = require(`../../assets/images/${data.icon}.png`);
@@ -81,7 +83,8 @@ const actions = {
       }
       return data;
     });
-    commit("setOtherCategories", withImageSrc);
+    const sortedByOrder = withImageSrc.sort((x, y) => x.order - y.order);
+    commit("setOtherCategories", sortedByOrder);
   },
   async filterCategories({ commit }, title) {
     const currentCount = this.state.categories.categories;

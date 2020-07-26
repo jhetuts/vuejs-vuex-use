@@ -4,7 +4,11 @@
   display: flex;
   max-width: 400px;
   margin: 0 auto 45px;
+  padding: 0 20px;
   justify-content: center;
+    @media screen and (max-width: 768px) {
+      margin: 0 auto 25px;
+    }
 
   input {
     display: block;
@@ -17,6 +21,10 @@
     outline: none;
     border-right: none;
     font-size: 100%;
+    @media screen and (max-width: 768px) {
+      padding: 5px;
+      font-size: 87.5%;
+    }
   }
   button {
     padding: 10px 20px;

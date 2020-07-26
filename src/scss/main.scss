@@ -15,6 +15,9 @@ body {
 }
 .App {
   padding: 50px 0;
+  @media screen and (max-width: 768px) {
+    padding: 30px 0;
+  }
   .Layout {
     display: block;
     width: 100%;
@@ -22,6 +25,9 @@ body {
     background: #fafafa;
     padding: 40px 20px;
     border-bottom: 2px solid #eee;
+    @media screen and (max-width: 768px) {
+      padding: 20px 10px;
+    }
 
     .inner-wrapper {
       display: flex;
@@ -29,9 +35,6 @@ body {
       max-width: 1024px;
       margin: auto;
       flex-wrap: wrap;
-      align-items: center;
-      align-content: center;
-      justify-content: space-evenly;
       flex-direction: row;
     }
   }

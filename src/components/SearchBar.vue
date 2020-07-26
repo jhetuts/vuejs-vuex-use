@@ -1,6 +1,6 @@
 <template>
   <div class="search-bar">
-    <input v-model="category" />
+    <input v-model="category" placeholder="Search for answers" />
     <button>
       <i class="fa fa-search" aria-hidden="true"></i>
     </button>
@@ -25,7 +25,7 @@ export default {
     });
   },
   watch: {
-    category: function (e) {
+    category: function(e) {
       if (this.$route.name !== "Categories") {
         if (e.length !== 0) {
           this.$router.push({
@@ -34,9 +34,7 @@ export default {
           });
         }
       }
-      if (e.length !== 0) {
-        this.$root.$emit("searchVal", e);
-      }
+      this.$root.$emit("searchVal", e);
     },
   },
 };
