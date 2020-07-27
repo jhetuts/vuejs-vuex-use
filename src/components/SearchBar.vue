@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      category: "",
+      category: ""
     };
   },
   mounted() {
@@ -21,17 +21,17 @@ export default {
   },
   watch: {
     category: function(e) {
-      if (this.$route.name !== "Categories") {
+      if (this.$route.name !== "Search") {
         if (e.length !== 0) {
           this.$router.push({
-            name: "Categories",
-            params: { errors: e },
+            name: "Search",
+            params: { query: e }
           });
         }
       }
       this.$root.$emit("searchVal", e);
-    },
-  },
+    }
+  }
 };
 </script>
 

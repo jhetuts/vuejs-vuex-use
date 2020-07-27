@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Categories from "../views/Categories.vue";
 import Category from "../views/Category.vue";
 import NotFound from "../views/NotFound.vue";
+import Search from "../views/SearchResults.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/categories/:id",
     name: "Category",
     component: Category,
+  },
+  {
+    path: "/search",
+    name: "Search",
+    component: Search,
   },
   {
     path: "*",

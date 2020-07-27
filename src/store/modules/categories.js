@@ -9,6 +9,7 @@ const state = {
   otherCategories: [],
   filteredCategories: [],
   author: [],
+  searchResults: [],
 };
 
 // Getters
@@ -19,6 +20,7 @@ const getters = {
   otherCategories: (state) => state.otherCategories,
   filteredCategories: (state) => state.filteredCategories,
   author: (state) => state.author,
+  searchResults: (state) => state.searchResults,
 };
 
 // Actions
@@ -98,6 +100,20 @@ const actions = {
     const response = await axios.get(`${API}/author/${author}`);
     commit("setAuthor", response.data.name);
   },
+
+  async searchArticles({ commit }, query) {
+    const response = await axios.get(`${API}/search/${query}`);
+    const publishedArticles = response.data.filter(
+      (article) => article.status === "published"
+    );
+
+    const filterByQuery = publishedArticles.filter((pArticle) =>
+      pArticle.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    console.log("filterByQuery", filterByQuery);
+    commit("setSearchResults", filterByQuery);
+  },
 };
 
 // Mutations
@@ -111,6 +127,8 @@ const mutations = {
   setFilteredCategories: (state, filteredCategories) =>
     (state.filteredCategories = filteredCategories),
   setAuthor: (state, author) => (state.author = author),
+  setSearchResults: (state, searchResults) =>
+    (state.searchResults = searchResults),
 };
 
 export default {
